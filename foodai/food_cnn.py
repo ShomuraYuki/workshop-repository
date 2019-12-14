@@ -22,7 +22,7 @@ def main():
 
 def model_train(X, y):
     model = Sequential()
-    model.add(Conv2D(32,(3,3), padding="same", imput_shape=X.shape[1:]))
+    model.add(Conv2D(32,(3,3), padding="same", input_shape=X.shape[1:]))
     model.add(Activation("relu"))
     model.add(Conv2D(32,(3,3)))
     model.add(Activation("relu"))
@@ -40,7 +40,7 @@ def model_train(X, y):
     model.add(Dense(512))
     model.add(Activation("relu"))
     model.add(Dropout(0.5))
-    model.add(Dense(3))
+    model.add(Dense(5))
     model.add(Activation("softmax"))
 
     opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
