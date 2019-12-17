@@ -2,18 +2,24 @@
 <html lang="ja" dir="ltr">
 
 <head>
-  <script src="food.js"> </script>
-  <script src="food.css"></script>
+    <link rel="stylesheet" href="css/result.css">
+     <link href="dist/hamburgers.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>ファイルをアップロードして判定しよう</title>
+    <title>RESULT</title>
 </head>
 
 <body>
-    <h1>ファイルをアップロードして判定しよう！</h1>
-    <form method = post enctype = multipart/form-data>
-        <p><input type=file name=file>
-        <input type=submit value=Upload>
-    </form>
+<img class="result" src="images/result.png"</img>
+<p class="result" style="position:absolute;left:100px;top:350px">この食材は{{message}}</p>
+<div id="ham-menu">
+<ul>
+<li> <a href="home.html" class="menu">HOME</a></li>
+<li> <a href="how.html" class="menu">HOW TO USE</a></li>
+<li> <a href="check.html" class="menu">LET'S CHECK!</a></li>
+<li> <a href="research.html" class="menu">RESEARCH</a></li>
+</ul>
+</div>
+<div id="menu-background"></div>
 </body>
 
 </html>
