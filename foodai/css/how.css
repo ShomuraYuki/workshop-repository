@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+li{
+    color:#FFFFFF;
+}
+.menu{
+    line-height:100px;
+    font-size: 20px;
+    color:#FFFFFF
+}
+
+#ham-menu {
+    background-color: #5AB8C4; /*メニュー背景色*/
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px 40px; /*メニュー内部上下左右余白*/
+    position: fixed;
+    right: -300px; /*メニュー横幅①と合わせる*/
+    top: 0;
+    transition: transform 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+    width: 300px; /*メニュー横幅①*/
+    z-index: 1000;
+}
+
+/*メニューアイコン部分は疑似要素で*/
+#ham-menu::before {
+    background-color: #5AB8C4; /*ボタン部分背景色*/
+    border-radius: 0 0 0 10px; /*左下角丸*/
+    color: #FFFFFF; /*アイコン（フォント）色*/
+    content: "≡"; /*メニューアイコン*/
+    display: block;
+    font-size: 50px; /*アイコン（フォント）サイズ*/
+    height: 50px;
+    line-height: 50px; /*縦位置中央化*/
+    position: absolute;
+    right: 100%;
+    text-align: center;
+    top: 0;
+    width: 50px;
+}
+
+/*透過背景部分*/
+#menu-background {
+    background-color: #FFFFFF; /*黒背景部分背景色*/
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+    width: 100%;
+    z-index: -1;
+}
+
+/*hover 時の処理*/
+#ham-menu:hover {
+    transform: translate(-300px); /*メニュー横幅①と合わせる*/
