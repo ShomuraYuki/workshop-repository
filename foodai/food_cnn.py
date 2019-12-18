@@ -40,7 +40,7 @@ def model_train(X, y):
     model.add(Dense(512))
     model.add(Activation("relu"))
     model.add(Dropout(0.5))
-    model.add(Dense(3))
+    model.add(Dense(5))
     model.add(Activation("softmax"))
 
     opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
