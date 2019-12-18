@@ -65,7 +65,7 @@ def upload_file():
 
             #return "ラベル： " + classes[predicted] + ", 判定： " + message
 
-            return render_template('result.html', message=message)
+            return render_template('result.html', message=message, label=classes[predicted] ,img_url=filepath)
 
             #return "ラベル： " + classes[predicted] + ", 確率："+ str(percentage) + " %"
 
