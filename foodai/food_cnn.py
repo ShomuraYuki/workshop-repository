@@ -22,7 +22,7 @@ def main():
 
 def model_train(X, y):
     model = Sequential()
-    model.add(Conv2D(32,(3,3), padding="same", imput_shape=X.shape[1:]))
+    model.add(Conv2D(32,(3,3), padding="same", input_shape=X.shape[1:]))
     model.add(Activation("relu"))
     model.add(Conv2D(32,(3,3)))
     model.add(Activation("relu"))
@@ -45,7 +45,7 @@ def model_train(X, y):
 
     opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
     model.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-    model.fit(X, y, batch_size=32, epochs=50)
+    model.fit(X, y, batch_size=32, epochs=100)
 
     #モデルの保存
     model.save("./food_cnn.h5")

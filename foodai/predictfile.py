@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for, flash
+from flask import Flask, request, redirect, url_for, flash, render_template
 from werkzeug.utils import secure_filename
 
 from keras.models import Sequential, load_model
@@ -48,30 +48,29 @@ def upload_file():
 
             result = model.predict([X])[0]
             predicted = result.argmax()
-            percentage = int(result[predicted] * 100)
+            #percentage = int(result[predicted] * 100)
 
-            return "ラベル： " + classes[predicted] + ", 確率："+ str(percentage) + " %"
+            img_url = '/uploads/' + filename
+            return render_template('result.html', img_url=img_url)
 
+            #return "ラベル： " + classes[predicted] + ", 確率："+ str(percentage) + " %"
 
             #return redirect(url_for('uploaded_file', filename=filename))
-    return '''
-    <!doctype html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>ファイルをアップロードして判定しよう</title>
-    </head>
-    <body>
-        <h1>ファイルをアップロードして判定しよう！</h1>
-        <form method = post enctype = multipart/form-data>
-            <p><input type=file name=file>
-            <input type=submit value=Upload>
-        </form>
-    </body>
-    </html>
-    '''
+    return render_template('home.html')
 
 from flask import send_from_directory
+
+@app.route('/check')
+def a():
+    return render_template('check.html')
+
+@app.route('/research')
+def b():
+    return render_template('research.html')
+
+@app.route('/how')
+def c():
+    return render_template('how.html')
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
