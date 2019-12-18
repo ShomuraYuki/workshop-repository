@@ -5,10 +5,18 @@ from werkzeug.utils import secure_filename
 from keras.models import Sequential, load_model
 import keras,sys
 import numpy as np
+import pandas as pd
 from PIL import Image
 
 classes = ["cabbage", "carrot", "japaneseradish", "onion", "tomato"]
 num_classes = len(classes)
+judge = pd.DataFrame([{ 
+    "cabbage" : "can",
+    "carrot" : "can",
+    "japaneseradish" : "can",
+    "onion" : "cannot",
+    "tomato" : "can"
+}])
 image_size = 50
 
 UPLOAD_FOLDER = './uploads'
@@ -50,8 +58,14 @@ def upload_file():
             predicted = result.argmax()
             #percentage = int(result[predicted] * 100)
 
-            img_url = '/uploads/' + filename
-            return render_template('result.html', img_url=img_url)
+            if judge[classes[predicted]][0] == "can":
+                message = "食べても問題ありません。"
+            else:
+                message = "食べてはいけません。"
+
+            #return "ラベル： " + classes[predicted] + ", 判定： " + message
+
+            return render_template('result.html', message=message)
 
             #return "ラベル： " + classes[predicted] + ", 確率："+ str(percentage) + " %"
 
